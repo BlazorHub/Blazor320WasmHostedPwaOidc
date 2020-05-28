@@ -1,0 +1,28 @@
+﻿@page "/identity"
+@inject DemoApiService Http
+@attribute [Authorize]
+
+<h3>Identity</h3>
+
+<dl>
+    @foreach (var claim in Claims)
+    {
+        <dt>@claim.Type</dt>
+        <dd>@claim.Value</dd>
+    }
+</dl>
+
+@code {
+    private IEnumerable<ClaimDto> Claims = new List<ClaimDto>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Claims = await Http.GetFromJsonAsync<IEnumerable<ClaimDto>>("api/identity");
+    }
+
+    class ClaimDto
+    {
+        public string Type { get; set; }
+        public string Value { get; set; }
+    }
+}

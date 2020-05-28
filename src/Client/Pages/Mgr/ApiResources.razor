@@ -1,0 +1,64 @@
+﻿@page "/ApiResources"
+@inject MgrApiService Http
+@attribute [Authorize]
+
+@if (Items == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    @foreach (var item in Items)
+    {
+        <div class="card border-0">
+            <div class="card-body">
+                <div class="card-title d-flex flex-row mb-1">
+                    <h4>
+                        <a href="ApiResources/@Id" style="color:black" class="@TitleTypeStyle">
+                            @if (!item.Enabled)
+                            {
+                                <span>@item.Name (Not Enabled)</span>
+                            }
+                            else
+                            {
+                                <span>@item.Name</span>
+                            }
+                        </a>
+                    </h4>
+                </div>
+
+                <div class="card-subtitle mb-2">
+                    <span>@item.DisplayName</span>
+                </div>
+
+                <p class="card-text mb-1">
+                    <span>@item.Description</span>
+                </p>
+
+                <a href="ApiResources/@Id" class="card-link" style="color:#555; border-bottom:1px solid #666;">...</a>
+            </div>
+        </div>
+    }
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private ApiResourceDto[] Items { get; set; }
+
+    private string TitleTypeStyle = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        Items = await Http.GetFromJsonAsync<ApiResourceDto[]>("api/ApiResources");
+    }
+
+    class ApiResourceDto
+    {
+        public bool Enabled { get; set; }
+        public string Name { get; set; }
+        public string DisplayName { get; set; }
+        public string Description { get; set; }
+    }
+}
