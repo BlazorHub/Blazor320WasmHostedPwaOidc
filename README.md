@@ -29,9 +29,9 @@ AllowedScopes = {
 }
 ```
 
-### 2.1 DemoApi 
-* https://localhost:6005/api/Identity
-* https://localhost:6005/api/WeatherForecast
+### 2.1 DemoApi
+* https://localhost:6005/api/Identity [Authorize]
+* https://localhost:6005/api/WeatherForecast [AllowAnonymous]
 ```
 Name = "ourauth.demoapi";
 DisplayName = "OurAuth DemoApi";
@@ -58,7 +58,7 @@ UserClaims = new[]
 ```
 
 ### 2.2 MgrApi
-https://localhost:6003/api/ApiResources
+https://localhost:6003/api/ApiResources [Authorize]
 
 ```
 Name = "ourauth.mgrapi";
