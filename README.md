@@ -1,7 +1,6 @@
 # Blazor320WasmHostedPwaOidc
 A simple Blazor WebAssembly use AddOidcAuthentication() to call secured WebApis
 
-## Third-party External resources
 ### 0.Oidc Server (eg. IdentityServer4)
 https://localhost:6001
 
