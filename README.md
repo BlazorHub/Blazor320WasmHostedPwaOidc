@@ -2,10 +2,10 @@
 A simple Blazor WebAssembly use AddOidcAuthentication() to call secured WebApis
 
 ### 0.Oidc Server (eg. IdentityServer4)
-https://localhost:6001
+* https://localhost:6001
 
 ### 1.Client (ie. this repo)
-https://localhost:5001
+* https://localhost:5001
 ```
 ClientId = "OurAuth.Demo.Oidc.Local",
 ClientName = "OurAuth Demo Oidc (Local/Development)",
@@ -30,8 +30,8 @@ AllowedScopes = {
 ```
 
 ### 2.1 DemoApi 
-https://localhost:6005/api/Identity
-https://localhost:6005/api/WeatherForecast
+* https://localhost:6005/api/Identity
+* https://localhost:6005/api/WeatherForecast
 ```
 Name = "ourauth.demoapi";
 DisplayName = "OurAuth DemoApi";
